@@ -1,0 +1,25 @@
+model_groups:
+  analyzer:
+    provider: zai
+    model: openai/glm-5-turbo
+    description: "Z.AI GLM-5 Turbo - kod ve etki analizi"
+  scenario_gen:
+    provider: zai
+    model: openai/glm-5-turbo
+    description: "Z.AI GLM-5 Turbo - test senaryosu uretimi"
+  verifier:
+    provider: zai
+    model: openai/glm-5.1
+    description: "Z.AI GLM-5.1 - sonuc dogrulama"
+  fallback:
+    provider: zai
+    model: openai/glm-5
+    description: "Z.AI GLM-5 - hizli fallback"
+
+routing:
+  task_analyze: analyzer
+  code_analyze: analyzer
+  impact_assess: analyzer
+  test_assess: analyzer
+  scenario_generate: scenario_gen
+  verify: verifier

@@ -1,0 +1,46 @@
+app:
+  name: ob-test-intelligence
+  version: "0.1.0"
+  host: "0.0.0.0"
+  port: 8081
+
+pipeline:
+  default_profile: standard
+  profiles:
+    standard:
+      phases:
+        - ensure_ready
+        - task_read
+        - code_analyze
+        - impact_analyze
+        - test_assess
+        - scenario_generate
+        - env_prepare
+        - test_execute
+        - verify
+        - report
+      user_checkpoints:
+        - test_assess
+        - scenario_generate
+    quick:
+      phases:
+        - ensure_ready
+        - task_read
+        - code_analyze
+        - test_assess
+        - report
+      user_checkpoints:
+        - test_assess
+
+paths:
+  ob_core: "C:\\repos\\obilet-core-v2"
+  graphify: "C:\\repos\\graphify-out"
+  context: "C:\\repos\\OBTaskManager\\obiletcontext"
+  outputs: "outputs/tests"
+
+docker:
+  compose_file: "docker-compose.local.yml"
+  api_service: "api"
+  web_service: "web"
+  health_timeout: 60
+  health_interval: 2

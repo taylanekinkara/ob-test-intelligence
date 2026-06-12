@@ -1,0 +1,21 @@
+risk:
+  high:
+    domains: ["payment"]
+    layers: ["payment_service"]
+    change_types: ["security_change"]
+  medium:
+    domains: ["bus", "flight", "hotel", "sea"]
+    layers: ["api_controller", "web_controller", "service"]
+    change_types: ["api_change", "service_logic", "new_api"]
+  low:
+    domains: ["rentacar", "transfer"]
+    layers: ["entity", "core_model"]
+    change_types: ["model_change", "ui_change"]
+
+coverage:
+  minimum_percentage: 70
+  target_percentage: 85
+
+impact:
+  max_hop_depth: 2
+  god_node_threshold: 50

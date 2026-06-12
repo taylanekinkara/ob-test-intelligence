@@ -1,0 +1,14 @@
+[project]
+name = "ob-test-intelligence"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+[project.scripts]
+ob-test = "app.cli:app"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
