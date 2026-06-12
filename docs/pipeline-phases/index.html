@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="tr" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-pipeline-phases" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Pipeline Fazları | ob-test-intelligence</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://taylanekinkara.github.io/ob-test-intelligence/docs/pipeline-phases"><meta data-rh="true" property="og:locale" content="tr"><meta data-rh="true" name="docusaurus_locale" content="tr"><meta data-rh="true" name="docsearch:language" content="tr"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Pipeline Fazları | ob-test-intelligence"><meta data-rh="true" name="description" content="ob-test-intelligence pipeline&#x27;ı 10 fazdan oluşur. Her faz belirli bir sorumluluğa sahiptir ve bir sonraki faza veri aktarır. İki fazda (test_assess ve scenario_generate) kullanıcı onayı beklenir."><meta data-rh="true" property="og:description" content="ob-test-intelligence pipeline&#x27;ı 10 fazdan oluşur. Her faz belirli bir sorumluluğa sahiptir ve bir sonraki faza veri aktarır. İki fazda (test_assess ve scenario_generate) kullanıcı onayı beklenir."><link data-rh="true" rel="icon" href="/ob-test-intelligence/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://taylanekinkara.github.io/ob-test-intelligence/docs/pipeline-phases"><link data-rh="true" rel="alternate" href="https://taylanekinkara.github.io/ob-test-intelligence/docs/pipeline-phases" hreflang="tr"><link data-rh="true" rel="alternate" href="https://taylanekinkara.github.io/ob-test-intelligence/docs/pipeline-phases" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pipeline Fazları","item":"https://taylanekinkara.github.io/ob-test-intelligence/docs/pipeline-phases"}]}</script><link rel="stylesheet" href="/ob-test-intelligence/assets/css/styles.65f12cff.css">
+<script src="/ob-test-intelligence/assets/js/runtime~main.d5487b99.js" defer="defer"></script>
+<script src="/ob-test-intelligence/assets/js/main.b5cb7746.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Ana içeriğe geç"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Ana içeriğe geç</a></div><nav aria-label="Ana menü" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Gezinme çubuğunu aç/kapat" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ob-test-intelligence/"><b class="navbar__title text--truncate">ob-test-intelligence</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/ob-test-intelligence/docs/overview">Dokumantasyon</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/taylanekinkara/ob-test-intelligence" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Karanlık ve aydınlık mod arasında geçiş yapın (şu anda system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Sayfa başına dön" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Belgeler kenar çubuğu" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/ob-test-intelligence/docs/overview"><span title="Baslangic" class="categoryLinkLabel_W154">Baslangic</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/ob-test-intelligence/docs/architecture"><span title="Mimari" class="categoryLinkLabel_W154">Mimari</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ob-test-intelligence/docs/architecture"><span title="Sistem Mimarisi" class="linkLabel_WmDU">Sistem Mimarisi</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ob-test-intelligence/docs/pipeline-phases"><span title="Pipeline Fazları" class="linkLabel_WmDU">Pipeline Fazları</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/ob-test-intelligence/docs/jira-integration"><span title="Entegrasyonlar" class="categoryLinkLabel_W154">Entegrasyonlar</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/ob-test-intelligence/docs/web-dashboard"><span title="Web UI" class="categoryLinkLabel_W154">Web UI</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/ob-test-intelligence/docs/cli-reference"><span title="Operasyon" class="categoryLinkLabel_W154">Operasyon</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Gezinti yolu"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Ana sayfa" class="breadcrumbs__link" href="/ob-test-intelligence/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Mimari</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Pipeline Fazları</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Bu sayfada</button></div><div class="theme-doc-markdown markdown"><header><h1>Pipeline Fazları</h1></header>
+<p>ob-test-intelligence pipeline&#x27;ı 10 fazdan oluşur. Her faz belirli bir sorumluluğa sahiptir ve bir sonraki faza veri aktarır. İki fazda (<strong>test_assess</strong> ve <strong>scenario_generate</strong>) kullanıcı onayı beklenir.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="genel-akış">Genel Akış<a href="#genel-akış" class="hash-link" aria-label="Genel Akış doğrudan bağlantı" title="Genel Akış doğrudan bağlantı" translate="no">​</a></h2>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">ensure_ready → task_read → code_analyze → impact_analyze → test_assess ⏸️ → scenario_generate ⏸️ → env_prepare → test_execute → verify → report</span><br></div></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-ensure_ready">1. ensure_ready<a href="#1-ensure_ready" class="hash-link" aria-label="1. ensure_ready doğrudan bağlantı" title="1. ensure_ready doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç">Amaç<a href="#amaç" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Pipeline çalışmadan önce sistemin sağlıklı olduğunu doğrular. Eksik bağımlılıklar uyarı olarak kaydedilir ancak pipeline&#x27;ı durdurmaz.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler">Girdiler<a href="#girdiler" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Sanal ortam (venv) yolu</li>
+<li class="">LLM servis URL&#x27;si</li>
+<li class="">Graphify graph.json yolu</li>
+<li class="">Context dizini yolu</li>
+<li class="">ob-core dizini yolu</li>
+<li class=""><code>jira-raw.json</code> dosya yolu</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar">Çıktılar<a href="#çıktılar" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>readiness_checks</strong>: Her kontrol noktası için <code>ready</code> / <code>not_ready</code> durumu</li>
+<li class=""><strong>warnings</strong>: Eksik veya sorunlu bağımlılıkların listesi</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kontroller">Kontroller<a href="#kontroller" class="hash-link" aria-label="Kontroller doğrudan bağlantı" title="Kontroller doğrudan bağlantı" translate="no">​</a></h3>
+<table><thead><tr><th>Kontrol</th><th>Açıklama</th></tr></thead><tbody><tr><td>venv</td><td>Python sanal ortamının varlığı</td></tr><tr><td>LLM health</td><td>LLM servisine health ping gönderimi</td></tr><tr><td>graph.json</td><td>Graphify bağımlılık grafiğinin varlığı</td></tr><tr><td>context path</td><td>Domain context dosyalarının bulunduğu dizin</td></tr><tr><td>ob-core path</td><td>ob-core kaynak kodunun bulunduğu dizin</td></tr><tr><td>jira-raw.json</td><td>Jira ham verisinin varlığı</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık">Temel Mantık<a href="#temel-mantık" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">Her kontrol noktası sırayla doğrulanır.</li>
+<li class="">Başarısız kontroller <code>warnings</code> listesine eklenir.</li>
+<li class="">Hiçbir uyarı pipeline&#x27;ı engellemez; tüm fazlar <code>warning</code> ile devam edebilir.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<p>Bir kontrol başarısız olursa ilgili faz kendi hata mesajını üretir. <code>ensure_ready</code> sadece uyarı üretir, istisna fırlatmaz.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-task_read">2. task_read<a href="#2-task_read" class="hash-link" aria-label="2. task_read doğrudan bağlantı" title="2. task_read doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-1">Amaç<a href="#amaç-1" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Jira verisini okur, domain tespiti yapar, branch adını çıkarır ve LLM ile yapılandırılmış bir görev özeti oluşturur.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-1">Girdiler<a href="#girdiler-1" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>jira-raw.json</code> (issue alanları, yorumlar, geliştirme bilgisi)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-1">Çıktılar<a href="#çıktılar-1" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>task-summary.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>title</code></td><td>Görev başlığı</td></tr><tr><td><code>description_summary</code></td><td>Açıklamanın özeti</td></tr><tr><td><code>domain</code></td><td>Tespit edilen domain (ör: payment, bus, hotel)</td></tr><tr><td><code>affected_verticals</code></td><td>Etkilenen vertikaller</td></tr><tr><td><code>what_changed</code></td><td>Yapılan değişikliğin özeti</td></tr><tr><td><code>expected_behavior</code></td><td>Beklenen davranış</td></tr><tr><td><code>acceptance_criteria</code></td><td>Kabul kriterleri</td></tr><tr><td><code>branch</code></td><td>Branch adı</td></tr><tr><td><code>risk_level</code></td><td>Risk seviyesi</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kullanılan-llm-promptu">Kullanılan LLM Prompt&#x27;u<a href="#kullanılan-llm-promptu" class="hash-link" aria-label="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" title="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>task_analyzer.md</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-1">Temel Mantık<a href="#temel-mantık-1" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class=""><code>jira-raw.json</code> okunur; issue alanları, yorumlar ve <code>dev_info</code> çıkarılır.</li>
+<li class="">Başlık ve açıklamadaki anahtar kelimelerden domain tespiti yapılır (ör: &quot;ödeme&quot;, &quot;payment&quot; → payment domain).</li>
+<li class=""><code>dev_info</code> içinden branch adı çıkarılır.</li>
+<li class=""><code>ContextLoader</code> ile domain&#x27;e özel context yüklenir.</li>
+<li class="">Tüm veriler LLM&#x27;e gönderilir; <code>task_analyzer.md</code> prompt&#x27;u ile yapılandırılmış çıktı üretilir.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-1">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-1" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Branch bulunamazsa <code>task-summary.branch</code> boş bırakılır; <code>code_analyze</code> fazı uyarı verir.</li>
+<li class="">Domain tespit edilemezse <code>generic</code> olarak işaretlenir.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-code_analyze">3. code_analyze<a href="#3-code_analyze" class="hash-link" aria-label="3. code_analyze doğrudan bağlantı" title="3. code_analyze doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-2">Amaç<a href="#amaç-2" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Branch üzerindeki değişen dosyaları analiz eder, katman ve domain sınıflandırması yapar, mimari context ile zenginleştirilmiş bir kod analizi üretir.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-2">Girdiler<a href="#girdiler-2" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>task-summary.json</code> (branch adı)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-2">Çıktılar<a href="#çıktılar-2" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>code-analysis.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>branch</code></td><td>Analiz edilen branch</td></tr><tr><td><code>files_changed</code></td><td>Değişen dosya listesi (her biri için <code>layer</code>, <code>domain</code>, <code>change_type</code>)</td></tr><tr><td><code>layers_affected</code></td><td>Etkilenen katmanlar</td></tr><tr><td><code>domains_affected</code></td><td>Etkilenen domainler</td></tr><tr><td><code>endpoints_affected</code></td><td>Etkilenen API endpoint&#x27;leri</td></tr><tr><td><code>llm_summary</code></td><td>LLM üretimi özet</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kullanılan-llm-promptu-1">Kullanılan LLM Prompt&#x27;u<a href="#kullanılan-llm-promptu-1" class="hash-link" aria-label="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" title="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>code_analyzer.md</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-2">Temel Mantık<a href="#temel-mantık-2" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class=""><code>task-summary.json</code>&#x27;dan branch adı alınır.</li>
+<li class=""><code>git diff_files</code> ile değişen dosya listesi alınır.</li>
+<li class=""><code>git diff_content</code> ile her dosyanın diff içeriği alınır (maksimum 50.000 karakter sınırı).</li>
+<li class="">Dosyalar katmanlarına göre sınıflandırılır:<!-- -->
+<ul>
+<li class=""><code>controller</code> — REST controller dosyaları</li>
+<li class=""><code>service</code> — İş mantığı katmanı</li>
+<li class=""><code>entity</code> — Veri modeli / entity dosyaları</li>
+<li class=""><code>view</code> — Sunum katmanı dosyaları</li>
+</ul>
+</li>
+<li class="">Dosyalar domainlerine göre gruplandırılır.</li>
+<li class="">Mimari context yüklenir.</li>
+<li class="">Tüm veriler LLM&#x27;e gönderilir; <code>code_analyzer.md</code> prompt&#x27;u ile analiz yapılır.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-2">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-2" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Diff içeriği 50K karakteri aşarsa kesilir; ilk 50K karakter kullanılır.</li>
+<li class="">Branch&#x27;te değişiklik yoksa boş dosya listesi döner.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-impact_analyze">4. impact_analyze<a href="#4-impact_analyze" class="hash-link" aria-label="4. impact_analyze doğrudan bağlantı" title="4. impact_analyze doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-3">Amaç<a href="#amaç-3" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Değişen dosyaların kod tabanındaki yayılım etkisini Graphify bağımlılık grafiği ile analiz eder. Risk değerlendirmesi yapar.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-3">Girdiler<a href="#girdiler-3" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>code-analysis.json</code> (seed dosyalar)</li>
+<li class="">Graphify graph.json (bağımlılık grafiği)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-3">Çıktılar<a href="#çıktılar-3" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>impact-analysis.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>seed_files</code></td><td>Analiz başlangıç dosyaları</td></tr><tr><td><code>one_hop</code></td><td>Doğrudan bağımlı dosyalar</td></tr><tr><td><code>two_hop</code></td><td>Dolaylı bağımlı dosyalar (2. derece)</td></tr><tr><td><code>communities_affected</code></td><td>Etkilenen Graphify toplulukları</td></tr><tr><td><code>god_nodes_affected</code></td><td>Etkilenen &quot;god node&quot; dosyaları</td></tr><tr><td><code>overall_risk</code></td><td>Genel risk seviyesi (<code>high</code> / <code>medium</code> / <code>low</code>)</td></tr><tr><td><code>regression_areas</code></td><td>Regresyon riski taşıyan alanlar</td></tr><tr><td><code>risk_factors</code></td><td>Risk faktörlerinin listesi</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kullanılan-llm-promptu-2">Kullanılan LLM Prompt&#x27;u<a href="#kullanılan-llm-promptu-2" class="hash-link" aria-label="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" title="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>impact_assessor.md</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-3">Temel Mantık<a href="#temel-mantık-3" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><code>code-analysis.json</code>&#x27;dan seed dosyalar alınır.</p>
+</li>
+<li class="">
+<p>Graphify sorgulanır:</p>
+<ul>
+<li class=""><strong>1-hop</strong>: Seed dosyaların doğrudan bağımlılıkları</li>
+<li class=""><strong>2-hop</strong>: Dolaylı bağımlılıklar</li>
+<li class=""><strong>Communities</strong>: Etkilenen topluluklar</li>
+<li class=""><strong>God nodes</strong>: Yüksek bağlantılı kritik dosyalar</li>
+</ul>
+</li>
+<li class="">
+<p>Statik risk değerlendirmesi uygulanır:</p>
+<table><thead><tr><th>Koşul</th><th>Risk</th></tr></thead><tbody><tr><td>Payment domain</td><td><code>high</code></td></tr><tr><td>API controller veya service katmanı</td><td><code>medium</code></td></tr><tr><td>Diğer tüm durumlar</td><td><code>low</code></td></tr></tbody></table>
+</li>
+<li class="">
+<p>LLM&#x27;e gönderilir; <code>impact_assessor.md</code> prompt&#x27;u ile regresyon alanları ve risk faktörleri belirlenir.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-3">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-3" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Graphify grafiği yoksa sadece statik risk değerlendirmesi yapılır; Graphify verisi olmadan uyarı üretilir.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-test_assess">5. test_assess<a href="#5-test_assess" class="hash-link" aria-label="5. test_assess doğrudan bağlantı" title="5. test_assess doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-4">Amaç<a href="#amaç-4" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Önceki fazların çıktılarını birleştirerek hangi testlerin yazılması gerektiğini belirler. Hangi testlerin <strong>yapılacağını</strong> ve hangilerinin <strong>atlanacağını</strong> kararlaştırır.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Kullanıcı Onayı Gerekli</div><div class="admonitionContent_BuS1"><p>Bu faz tamamlandıktan sonra pipeline durur. Kullanıcı <code>test-assessment.json</code> çıktısını inceleyip onaylamalıdır.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-4">Girdiler<a href="#girdiler-4" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>task-summary.json</code></li>
+<li class=""><code>code-analysis.json</code></li>
+<li class=""><code>impact-analysis.json</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-4">Çıktılar<a href="#çıktılar-4" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>test-assessment.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>needs_testing</code></td><td>Test gerekip gerekmediği (<code>true</code> / <code>false</code>)</td></tr><tr><td><code>test_items</code></td><td>Test öğeleri listesi</td></tr><tr><td><code>skip_items</code></td><td>Atlanan öğeler ve nedenleri</td></tr><tr><td><code>environment</code></td><td>Önerilen test ortamı</td></tr></tbody></table>
+<p>Her <code>test_item</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>id</code></td><td>Benzersiz tanımlayıcı</td></tr><tr><td><code>target</code></td><td>Hedef dosya veya endpoint</td></tr><tr><td><code>description</code></td><td>Test açıklaması</td></tr><tr><td><code>test_type</code></td><td>Test türü (ör: <code>integration</code>, <code>functional</code>, <code>security</code>)</td></tr><tr><td><code>priority</code></td><td>Öncelik (<code>p0</code>, <code>p1</code>, <code>p2</code>, <code>p3</code>)</td></tr><tr><td><code>domain</code></td><td>İlgili domain</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kullanılan-llm-promptu-3">Kullanılan LLM Prompt&#x27;u<a href="#kullanılan-llm-promptu-3" class="hash-link" aria-label="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" title="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>test_assessor.md</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-4">Temel Mantık<a href="#temel-mantık-4" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">Üç önceki fazın çıktıları birleştirilir.</li>
+<li class="">LLM, <code>test_assessor.md</code> prompt&#x27;u ile test öğeleri ve atlanacak öğeler üretir.</li>
+<li class=""><strong>Sabit kurallar</strong> (override edilemez):<!-- -->
+<ul>
+<li class=""><strong>Payment domain</strong> → her zaman test üretilir, öncelik <strong>p0</strong> veya <strong>p1</strong>.</li>
+<li class=""><strong>API controller / service katmanı</strong> → her zaman test üretilir, öncelik <strong>p0</strong> veya <strong>p1</strong>.</li>
+</ul>
+</li>
+<li class=""><strong>Anti-pattern kuralları</strong> uygulanır:<!-- -->
+<ul>
+<li class="">Mirror endpoint tekrarı engellenir (aynı endpoint için birden fazla özdeş test yazılmaz).</li>
+<li class="">Varyasyon patlaması önlenir (gereksiz parametre kombinasyonları üretilmez).</li>
+<li class="">Çakışan güvenlik denetimleri birleştirilir.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-4">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-4" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">LLM çıktısında sabit kurallara aykırı öğe varsa (ör: payment domain için test yok), sistem otomatik olarak test öğesi ekler.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-scenario_generate">6. scenario_generate<a href="#6-scenario_generate" class="hash-link" aria-label="6. scenario_generate doğrudan bağlantı" title="6. scenario_generate doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-5">Amaç<a href="#amaç-5" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Her test öğesi için somut test senaryoları üretir. Her senaryo adımlar, doğrulamalar ve beklenen durum kodları içerir.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Kullanıcı Onayı Gerekli</div><div class="admonitionContent_BuS1"><p>Bu faz tamamlandıktan sonra pipeline durur. Kullanıcı <code>test-scenarios.json</code> çıktısını inceleyip onaylamalıdır.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-5">Girdiler<a href="#girdiler-5" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>test-assessment.json</code> (test_items listesi)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-5">Çıktılar<a href="#çıktılar-5" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>test-scenarios.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>scenarios</code></td><td>Senaryo listesi</td></tr></tbody></table>
+<p>Her senaryo:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>id</code></td><td>Benzersiz senaryo tanımlayıcısı</td></tr><tr><td><code>test_item_id</code></td><td>İlişkili test öğesi</td></tr><tr><td><code>name</code></td><td>Senaryo adı</td></tr><tr><td><code>type</code></td><td>Senaryo türü (<code>happy_path</code>, <code>edge_case</code>, <code>error_case</code>)</td></tr><tr><td><code>steps</code></td><td>HTTP istek adımları</td></tr><tr><td><code>assertions</code></td><td>Beklenen doğrulama kuralları</td></tr><tr><td><code>expected_status_code</code></td><td>Beklenen HTTP durum kodu</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="kullanılan-llm-promptu-4">Kullanılan LLM Prompt&#x27;u<a href="#kullanılan-llm-promptu-4" class="hash-link" aria-label="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" title="Kullanılan LLM Prompt&#x27;u doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>scenario_generator.md</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-5">Temel Mantık<a href="#temel-mantık-5" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class=""><code>test-assessment.json</code>&#x27;daki her <code>test_item</code> sırayla işlenir.</li>
+<li class="">Her öğe için LLM&#x27;e <code>scenario_generator.md</code> prompt&#x27;u ile senaryo ürettirilir.</li>
+<li class="">Minimum senaryo türleri garanti edilir:<!-- -->
+<ul>
+<li class=""><strong>happy_path</strong>: Başarılı akış senaryosu</li>
+<li class=""><strong>edge_case</strong>: Sınır koşul senaryosu</li>
+<li class=""><strong>error_case</strong>: Hata akış senaryosu</li>
+</ul>
+</li>
+<li class="">Test öğeleri arasında <strong>2 saniyelik</strong> throttle uygulanır (rate limiting).</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-5">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-5" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">LLM belirli bir senaryo türünü üretmezse, sistem minimum türleri otomatik olarak ekler.</li>
+<li class="">Throttle sayesinde API rate limit aşılmaz.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-env_prepare">7. env_prepare<a href="#7-env_prepare" class="hash-link" aria-label="7. env_prepare doğrudan bağlantı" title="7. env_prepare doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-6">Amaç<a href="#amaç-6" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Testlerin çalıştırılacağı ortamın hazır olduğunu doğrular. Docker ve API erişilebilirliğini kontrol eder.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-6">Girdiler<a href="#girdiler-6" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Yapılandırma dosyasındaki Docker ve API ayarları</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-6">Çıktılar<a href="#çıktılar-6" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>env-status.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td>Docker durumu</td><td>Çalışıyor / çalışmıyor</td></tr><tr><td>API erişilebilirliği</td><td>Ulaşılabilir / ulaşılamaz</td></tr><tr><td>Ortam detayları</td><td>Tespit edilen ortam bilgileri</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-6">Temel Mantık<a href="#temel-mantık-6" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">Docker servisinin çalışıp çalışmadığı kontrol edilir.</li>
+<li class="">Hedef API&#x27;nin erişilebilir olduğu doğrulanır (health check).</li>
+<li class="">Ortam durumu kayıt altına alınır.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-6">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-6" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Docker çalışmıyorsa <code>env-status.json</code>&#x27;da <code>docker_ready: false</code> olarak işaretlenir.</li>
+<li class="">API erişilemezse <code>api_ready: false</code> olarak işaretlenir.</li>
+<li class=""><code>test_execute</code> fazı bu durumu değerlendirerek senaryoları atlayabilir.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="8-test_execute">8. test_execute<a href="#8-test_execute" class="hash-link" aria-label="8. test_execute doğrudan bağlantı" title="8. test_execute doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-7">Amaç<a href="#amaç-7" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Üretilen test senaryolarını yerel API&#x27;ye karşı çalıştırır. Her senaryonun sonucunu (başarılı / başarısız) kaydeder.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-7">Girdiler<a href="#girdiler-7" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>test-scenarios.json</code></li>
+<li class=""><code>env-status.json</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-7">Çıktılar<a href="#çıktılar-7" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>test-results.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>execution_time</code></td><td>Toplam çalıştırma süresi</td></tr><tr><td><code>total_scenarios</code></td><td>Toplam senaryo sayısı</td></tr><tr><td><code>passed</code></td><td>Başarılı senaryo sayısı</td></tr><tr><td><code>failed</code></td><td>Başarısız senaryo sayısı</td></tr><tr><td><code>skipped</code></td><td>Atlanan senaryo sayısı</td></tr><tr><td><code>results</code></td><td>Her senaryonun detayı</td></tr></tbody></table>
+<p>Her <code>result</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>scenario_id</code></td><td>Senaryo tanımlayıcısı</td></tr><tr><td><code>passed</code></td><td>Başarılı / başarısız</td></tr><tr><td><code>status_code</code></td><td>Alınan HTTP durum kodu</td></tr><tr><td><code>assertions</code></td><td>Assertion sonuçları</td></tr><tr><td><code>duration_ms</code></td><td>Senaryo çalıştırma süresi (ms)</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-7">Temel Mantık<a href="#temel-mantık-7" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class=""><code>env-status.json</code> kontrol edilir; ortam hazır değilse uygun senaryolar <code>skipped</code> olarak işaretlenir.</li>
+<li class="">Her senaryo sırayla çalıştırılır:<!-- -->
+<ul>
+<li class=""><code>steps</code> içindeki HTTP istekleri gönderilir.</li>
+<li class="">Yanıtlar <code>assertions</code> ile karşılaştırılır.</li>
+<li class="">Beklenen <code>status_code</code> ile alınan kod eşleştirilir.</li>
+</ul>
+</li>
+<li class="">Her senaryo için <code>passed</code> / <code>failed</code> kararı kaydedilir.</li>
+<li class="">Toplam istatistikler hesaplanır.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-7">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-7" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">API yanıt vermezse senaryo <code>skipped</code> olarak işaretlenir.</li>
+<li class="">Assertion hatasında <code>passed: false</code> kaydedilir; pipeline devam eder.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="9-verify">9. verify<a href="#9-verify" class="hash-link" aria-label="9. verify doğrudan bağlantı" title="9. verify doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-8">Amaç<a href="#amaç-8" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Test sonuçlarını analiz eder, kapsam yüzdesini hesaplar ve yanlış pozitif / yanlış negatif tespiti yapar.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-8">Girdiler<a href="#girdiler-8" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><code>test-results.json</code></li>
+<li class=""><code>test-scenarios.json</code></li>
+<li class=""><code>test-assessment.json</code></li>
+<li class=""><code>impact-analysis.json</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-8">Çıktılar<a href="#çıktılar-8" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<p><code>verification-report.json</code>:</p>
+<table><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody><tr><td><code>overall_verdict</code></td><td>Genel değerlendirme (<code>pass</code> / <code>fail</code> / <code>partial</code>)</td></tr><tr><td><code>coverage_percentage</code></td><td>Test kapsama yüzdesi</td></tr><tr><td><code>test_quality</code></td><td>Test kalitesi değerlendirmesi</td></tr><tr><td><code>findings</code></td><td>Tespit edilen bulgular</td></tr><tr><td><code>false_positives</code></td><td>Yanlış pozitif senaryolar</td></tr><tr><td><code>false_negatives</code></td><td>Yanlış negatif senaryolar</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-8">Temel Mantık<a href="#temel-mantık-8" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">Test sonuçları senaryolar ve etki analizi ile çapraz kontrol edilir.</li>
+<li class="">Kapsama yüzdesi hesaplanır: etkilenen dosya / endpoint sayısına göre kapsanan alan oranı.</li>
+<li class="">Yanlış pozitifler tespit edilir: başarılı olan ancak aslında test edilen davranışı kapsamayan senaryolar.</li>
+<li class="">Yanlış negatifler tespit edilir: başarısız olan ancak testin kendisinde hata olan senaryolar.</li>
+<li class="">Genel değerlendirme üretilir.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-8">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-8" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Sonuçlar yetersizse <code>overall_verdict: partial</code> olarak işaretlenir ve raporda öneriler sunulur.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="10-report">10. report<a href="#10-report" class="hash-link" aria-label="10. report doğrudan bağlantı" title="10. report doğrudan bağlantı" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amaç-9">Amaç<a href="#amaç-9" class="hash-link" aria-label="Amaç doğrudan bağlantı" title="Amaç doğrudan bağlantı" translate="no">​</a></h3>
+<p>Tüm pipeline sonuçlarını okunabilir bir Markdown raporu olarak sunar. Rapor; özet tablo, değişen dosyalar, etki analizi, test senaryoları, bulgular ve ortam bilgilerini içerir.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="girdiler-9">Girdiler<a href="#girdiler-9" class="hash-link" aria-label="Girdiler doğrudan bağlantı" title="Girdiler doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Tüm önceki faz çıktıları</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="çıktılar-9">Çıktılar<a href="#çıktılar-9" class="hash-link" aria-label="Çıktılar doğrudan bağlantı" title="Çıktılar doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>report.md</strong>: İnsan tarafından okunabilir Markdown rapor</li>
+<li class=""><strong>report-meta.json</strong>: Rapor üst verisi (oluşturulma tarihi, faz süreleri, token kullanımı)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rapor-i̇çeriği">Rapor İçeriği<a href="#rapor-i̇çeriği" class="hash-link" aria-label="Rapor İçeriği doğrudan bağlantı" title="Rapor İçeriği doğrudan bağlantı" translate="no">​</a></h3>
+<table><thead><tr><th>Bölüm</th><th>Açıklama</th></tr></thead><tbody><tr><td>Özet tablo</td><td>Toplam senaryo, geçen, kalan, kapsam yüzdesi</td></tr><tr><td>Değişen dosyalar</td><td>Katman ve domain sınıflandırmasıyla</td></tr><tr><td>Etki analizi</td><td>Risk seviyesi, etkilenen alanlar</td></tr><tr><td>Test senaryoları</td><td>Her senaryo adı, türü, sonucu</td></tr><tr><td>Bulgular</td><td><code>verify</code> fazının tespitleri</td></tr><tr><td>Ortam bilgisi</td><td>Docker, API durumu</td></tr><tr><td>Token kullanım tablosu</td><td>Her fazda harcanan token sayısı</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="temel-mantık-9">Temel Mantık<a href="#temel-mantık-9" class="hash-link" aria-label="Temel Mantık doğrudan bağlantı" title="Temel Mantık doğrudan bağlantı" translate="no">​</a></h3>
+<ol>
+<li class="">Tüm faz çıktıları toplanır.</li>
+<li class="">Markdown rapor şu yapıda oluşturulur:<!-- -->
+<ul>
+<li class="">Başlık ve meta bilgiler</li>
+<li class="">Özet tablo</li>
+<li class="">Detaylı bölümler (her faz için)</li>
+<li class="">Token kullanım özeti</li>
+</ul>
+</li>
+<li class="">Rapor dosyası ve meta verisi ayrı ayrı kaydedilir.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="geri-dönüş-davranışı-9">Geri Dönüş Davranışı<a href="#geri-dönüş-davranışı-9" class="hash-link" aria-label="Geri Dönüş Davranışı doğrudan bağlantı" title="Geri Dönüş Davranışı doğrudan bağlantı" translate="no">​</a></h3>
+<ul>
+<li class="">Bir faz çıktısı eksikse ilgili bölüm &quot;Veri mevcut değil&quot; olarak işaretlenir; rapor yine de oluşturulur.</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Dokümanlar sayfası"><a class="pagination-nav__link pagination-nav__link--prev" href="/ob-test-intelligence/docs/architecture"><div class="pagination-nav__sublabel">Önceki</div><div class="pagination-nav__label">Sistem Mimarisi</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ob-test-intelligence/docs/jira-integration"><div class="pagination-nav__sublabel">Sonraki</div><div class="pagination-nav__label">Jira Entegrasyonu</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#genel-akış" class="table-of-contents__link toc-highlight">Genel Akış</a></li><li><a href="#1-ensure_ready" class="table-of-contents__link toc-highlight">1. ensure_ready</a><ul><li><a href="#amaç" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kontroller" class="table-of-contents__link toc-highlight">Kontroller</a></li><li><a href="#temel-mantık" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#2-task_read" class="table-of-contents__link toc-highlight">2. task_read</a><ul><li><a href="#amaç-1" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-1" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-1" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kullanılan-llm-promptu" class="table-of-contents__link toc-highlight">Kullanılan LLM Prompt&#39;u</a></li><li><a href="#temel-mantık-1" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-1" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#3-code_analyze" class="table-of-contents__link toc-highlight">3. code_analyze</a><ul><li><a href="#amaç-2" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-2" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-2" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kullanılan-llm-promptu-1" class="table-of-contents__link toc-highlight">Kullanılan LLM Prompt&#39;u</a></li><li><a href="#temel-mantık-2" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-2" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#4-impact_analyze" class="table-of-contents__link toc-highlight">4. impact_analyze</a><ul><li><a href="#amaç-3" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-3" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-3" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kullanılan-llm-promptu-2" class="table-of-contents__link toc-highlight">Kullanılan LLM Prompt&#39;u</a></li><li><a href="#temel-mantık-3" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-3" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#5-test_assess" class="table-of-contents__link toc-highlight">5. test_assess</a><ul><li><a href="#amaç-4" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-4" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-4" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kullanılan-llm-promptu-3" class="table-of-contents__link toc-highlight">Kullanılan LLM Prompt&#39;u</a></li><li><a href="#temel-mantık-4" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-4" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#6-scenario_generate" class="table-of-contents__link toc-highlight">6. scenario_generate</a><ul><li><a href="#amaç-5" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-5" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-5" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#kullanılan-llm-promptu-4" class="table-of-contents__link toc-highlight">Kullanılan LLM Prompt&#39;u</a></li><li><a href="#temel-mantık-5" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-5" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#7-env_prepare" class="table-of-contents__link toc-highlight">7. env_prepare</a><ul><li><a href="#amaç-6" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-6" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-6" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#temel-mantık-6" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-6" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#8-test_execute" class="table-of-contents__link toc-highlight">8. test_execute</a><ul><li><a href="#amaç-7" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-7" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-7" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#temel-mantık-7" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-7" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#9-verify" class="table-of-contents__link toc-highlight">9. verify</a><ul><li><a href="#amaç-8" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-8" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-8" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#temel-mantık-8" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-8" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li><li><a href="#10-report" class="table-of-contents__link toc-highlight">10. report</a><ul><li><a href="#amaç-9" class="table-of-contents__link toc-highlight">Amaç</a></li><li><a href="#girdiler-9" class="table-of-contents__link toc-highlight">Girdiler</a></li><li><a href="#çıktılar-9" class="table-of-contents__link toc-highlight">Çıktılar</a></li><li><a href="#rapor-i̇çeriği" class="table-of-contents__link toc-highlight">Rapor İçeriği</a></li><li><a href="#temel-mantık-9" class="table-of-contents__link toc-highlight">Temel Mantık</a></li><li><a href="#geri-dönüş-davranışı-9" class="table-of-contents__link toc-highlight">Geri Dönüş Davranışı</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Baslangic</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/ob-test-intelligence/docs/overview">Genel Bakis</a></li><li class="footer__item"><a class="footer__link-item" href="/ob-test-intelligence/docs/quick-start">Hizli Baslangic</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Referans</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/ob-test-intelligence/docs/cli-reference">CLI Referansi</a></li><li class="footer__item"><a class="footer__link-item" href="/ob-test-intelligence/docs/configuration">Yapilandirma</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Kaynaklar</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/taylanekinkara/ob-test-intelligence" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 oBilet. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
